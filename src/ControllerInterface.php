@@ -3,7 +3,7 @@
 interface ControllerInterface
 {
     /**
-     * Returns response.
+     * Returns response
      * @return Response
      */
     public function getResponse();
