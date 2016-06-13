@@ -1,10 +1,12 @@
 <?php
 
 require_once 'ControllerInterface.php';
+require_once __DIR__ . '/v1/APIV1Controller.php';
 
 class APIController implements ControllerInterface
 {
     private $controller;
+
     /**
      * APIController constructor.
      * @param $request_method
@@ -19,12 +21,12 @@ class APIController implements ControllerInterface
 
             switch ($api_version) {
                 case 'v1':
-                    // TODO: set APIV1Controller
+                    $this->controller = new APIV1Controller();
                     break;
                 default:
                     // TODO: return error response
             }
-        } else{
+        } else {
             // TODO: return error response
         }
     }
@@ -35,6 +37,6 @@ class APIController implements ControllerInterface
      */
     public function getResponse()
     {
-        // TODO: Implement getResponse() method.
+        return $this->controller->getResponse();
     }
 }
