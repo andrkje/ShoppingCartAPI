@@ -17,6 +17,7 @@ if (isset($_SERVER['PATH_INFO'])) {
         $controller = new APIController($request_method, $path, $body);
         $response = $controller->getResponse();
     } else {
+        $response = new Response("InvalidError");  // TODO: return invalid JSON error
     }
 
     header(':', true, $response->getStatusCode());
