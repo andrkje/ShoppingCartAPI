@@ -1,7 +1,7 @@
 <?php
 
 require_once 'ControllerInterface.php';
-require_once __DIR__ . '/v1/APIV1Controller.php';
+require_once __DIR__ . '/v1/V1Paths.php';
 require_once __DIR__ . '/v1/response/errors/InvalidPathError.php';
 
 class APIController implements ControllerInterface
@@ -16,13 +16,14 @@ class APIController implements ControllerInterface
      */
     public function __construct($request_method, $path, $body)
     {
+        $path_array = explode('/', $path);  // TODO: clean up. Also duplicate
+        array_shift($path_array);
 
-        if (count($path) > 0) {
-            $api_version = $path[0];
-
+        if (count($path_array) > 0) {
+            $api_version = $path_array[0];
             switch ($api_version) {
                 case 'v1':
-                    $this->controller = new APIV1Controller($request_method, $path, $body);
+                    $this->controller = new V1Paths($request_method, $path, $body);
                     break;
                 default:
                     $this->error = new InvalidPathError($path, $request_method);
@@ -30,7 +31,11 @@ class APIController implements ControllerInterface
         } else {
             $this->error = new InvalidPathError($path, $request_method);
         }
+
+       
     }
+
+    
 
     /**
      * Returns response.

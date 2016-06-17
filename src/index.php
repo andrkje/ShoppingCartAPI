@@ -14,12 +14,12 @@ if (isset($_SERVER['PATH_INFO'])) {
     $response = null;
 
     if (json_last_error() == JSON_ERROR_NONE) {
-        $controller = new APIController($request_method, $path, $body);
+        $controller = new APIController($request_method, trim($_SERVER['PATH_INFO']), $body);
         $response = $controller->getResponse();
     } else {
         $response = new Response("InvalidError");  // TODO: return invalid JSON error
     }
 
-    header(':', true, $response->getStatusCode());
+    //header(':', true, $response->getStatusCode());
     echo $response->getResponse();
 }
