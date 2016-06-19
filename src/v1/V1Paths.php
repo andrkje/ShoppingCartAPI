@@ -4,18 +4,21 @@ require_once __DIR__ . '/../ControllerInterface.php';
 require_once __DIR__ . '/response/errors/InvalidPathError.php';
 require_once __DIR__ . '/response/Response.php';
 
+//TEOMP
+require_once __DIR__ . '/models/APIPaths.php';
+require_once __DIR__ . '/models/Path.php';
+
+
 class V1Paths implements ControllerInterface
 {
     private $controller;
 
     public function __construct($request_method, $path, $body)
     {
+        //$p = new Path('test/aa', 'test', ['sdfsdf', 'PUT']);
 
-        if($this->isIntegerString('10s021'))
-            echo "y";
-        else echo'no';
+        print_r(REQUEST_METHODS);
 
-        echo "   ";
 
         /*
         switch ( $this->getPathFormat($path)) {

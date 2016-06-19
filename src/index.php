@@ -1,6 +1,7 @@
 <?php
 
 require_once 'APIController.php';
+require_once 'config/Definitions.php';
 
 header('Content-Type: text/html; charset=utf-8');
 header('Access-Control-Allow-Origin: *');
