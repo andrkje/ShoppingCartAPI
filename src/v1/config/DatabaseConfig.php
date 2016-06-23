@@ -3,7 +3,7 @@
 /**
  * Class Config
  */
-class Config
+class DatabaseConfig
 {
     // DB
 

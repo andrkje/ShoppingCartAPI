@@ -1,7 +1,5 @@
 <?php
 
-require_once 'Path.php';
-
 /**
  * Class APIPaths
  *
