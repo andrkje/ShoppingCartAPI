@@ -8,12 +8,9 @@ require_once __DIR__ . '/config/V1PathConfig.php';
 require_once __DIR__ . '/models/api/APIPaths.php';
 require_once __DIR__ . '/models/api/Path.php';
 
-foreach (glob("v1/controllers/*.php") as $filename)
-{
+foreach (glob("v1/controllers/*.php") as $filename) {
     require_once $filename;
 }
-
-
 
 class V1Paths implements ControllerInterface
 {
@@ -48,7 +45,7 @@ class V1Paths implements ControllerInterface
 
         } catch (InvalidArgumentException $e) {
             if (DEBUG)
-            echo get_class($e) . ": " . $e->getMessage();
+                echo get_class($e) . ": " . $e->getMessage();
         }
 
 
